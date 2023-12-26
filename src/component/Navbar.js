@@ -20,6 +20,12 @@ const Navbar = () => {
     navigate("/login");
   };
 
+  const search = (event) => {
+    if (event.key == "Enter") {
+      navigate(`?q=${event.target.value}`);
+    }
+  };
+
   return (
     <div>
       <div>
@@ -42,7 +48,13 @@ const Navbar = () => {
         </ul>
         <div className="nav-search">
           <FaSearch />
-          <input type="text" placeholder="제품검색" />
+          <input
+            type="text"
+            placeholder="제품검색"
+            onKeyDown={(event) => {
+              search(event);
+            }}
+          />
         </div>
       </div>
     </div>
