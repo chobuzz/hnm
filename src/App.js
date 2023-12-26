@@ -4,11 +4,11 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { Routes, Route } from "react-router-dom";
 import ProductAll from "./page/ProductAll";
 import Login from "./page/Login";
-import ProductDetail from "./page/ProductDetail";
+import PrivateRoute from "./route/PrivateRoute";
 import Navbar from "./component/Navbar";
 
 function App() {
-  const [authenticate, setAuthenticate] = useState(false);
+  const [authenticate, setAuthenticate] = useState(true);
 
   useEffect(() => {
     console.log("authenticate", authenticate);
@@ -25,7 +25,7 @@ function App() {
         ></Route>
         <Route
           path="/product/:id"
-          element={<ProductDetail authenticate={authenticate} />}
+          element={<PrivateRoute authenticate={authenticate} />}
         ></Route>
       </Routes>
     </div>
