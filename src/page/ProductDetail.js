@@ -1,64 +1,60 @@
 import React, { useEffect, useState } from "react";
-import { Container, Row, Col, Dropdown } from "react-bootstrap";
 import { useParams } from "react-router-dom";
+import { Container, Row, Col, Button, Dropdown, Alert } from "react-bootstrap";
 
 const ProductDetail = () => {
-  const { id } = useParams();
-
   const [product, setProduct] = useState(null);
-
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
+  const { id } = useParams();
   const getProductDetail = async () => {
-    const url = `http://localhost:3004/products/${id}`;
-    const response = await fetch(url);
-    const data = await response.json();
+    setLoading(true);
+    let url = `http://localhost:3004/products/${id}`;
+    let response = await fetch(url);
+    let data = await response.json();
+    setLoading(false);
+
     setProduct(data);
   };
-
   useEffect(() => {
     getProductDetail();
   }, []);
-
+  if (loading || product == null) return <h1>Loading</h1>;
   return (
-    <Container>
-      <Row>
-        <Col>
-          <img src={product?.img} style={{ maxWidth: "70%", float: "right" }} />
-        </Col>
-        <Col>
-          <div>{product?.title}</div>
-          <div>₩{product?.price}</div>
-          <div>{product?.choice == true ? "Conscious choice" : ""}</div>
+    <Container className="product-detail-card">
+      {error ? (
+        <Alert variant="danger" className="text-center">
+          {error}
+        </Alert>
+      ) : (
+        <Row>
+          <Col className="product-detail-img">
+            <img src={product.img} />
+          </Col>
+          <Col>
+            <div className="product-info">{product.title}</div>
+            <div className="product-info">₩ {product.price}</div>
+            <div className="choice">
+              {product.choice ? "Conscious choice" : ""}
+            </div>
+            <Dropdown className="drop-down">
+              <Dropdown.Toggle variant="outline-dark" id="dropdown-basic">
+                사이즈 선택
+              </Dropdown.Toggle>
 
-          <Dropdown
-            style={{
-              marginTop: "10px",
-            }}
-          >
-            <Dropdown.Toggle variant="primary" id="dropdown-basic">
-              사이즈 선택
-            </Dropdown.Toggle>
-
-            <Dropdown.Menu>
-              <Dropdown.Item eventKey={"S"}>S</Dropdown.Item>
-              <Dropdown.Item eventKey={"M"}>M</Dropdown.Item>
-              <Dropdown.Item eventKey={"L"}>L</Dropdown.Item>
-            </Dropdown.Menu>
-          </Dropdown>
-          <button
-            style={{
-              backgroundColor: "black",
-              color: "white",
-              borderRadius: "5px",
-              border: "none",
-              cursor: "pointer",
-              width: "70%",
-              marginTop: "10px",
-            }}
-          >
-            추가
-          </button>
-        </Col>
-      </Row>
+              <Dropdown.Menu>
+                {product?.size.length > 0 &&
+                  product.size.map((item) => (
+                    <Dropdown.Item href="#/action-1">{item}</Dropdown.Item>
+                  ))}
+              </Dropdown.Menu>
+            </Dropdown>
+            <Button variant="dark" className="add-button">
+              추가
+            </Button>
+          </Col>
+        </Row>
+      )}
     </Container>
   );
 };

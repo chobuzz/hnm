@@ -8,7 +8,7 @@ import PrivateRoute from "./route/PrivateRoute";
 import Navbar from "./component/Navbar";
 
 function App() {
-  const [authenticate, setAuthenticate] = useState(true);
+  const [authenticate, setAuthenticate] = useState(false);
 
   useEffect(() => {
     console.log("authenticate", authenticate);
@@ -16,7 +16,7 @@ function App() {
 
   return (
     <div className="App">
-      <Navbar />
+      <Navbar authenticate={authenticate} setAuthenticate={setAuthenticate} />
       <Routes>
         <Route path="/" element={<ProductAll />}></Route>
         <Route
