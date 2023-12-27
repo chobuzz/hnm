@@ -11,7 +11,7 @@ const ProductAll = () => {
 
   const getProduct = async () => {
     let searchQuery = query.get("q") || "";
-    const url = `http://localhost:3004/products/?q=${searchQuery}`;
+    const url = `https://my-json-server.typicode.com/chobuzz/hnm/products/?q=${searchQuery}`;
     const response = await fetch(url);
     const data = await response.json();
     setProductList(data);
