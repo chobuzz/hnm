@@ -1,70 +1,60 @@
-# Getting Started with Create React App
+# H&M 프로젝트
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<img src="./public/images/mainPage.png" width="300px">
 
-## Available Scripts
+H&M 쇼핑몰 사이트로써 기본적인 리액트 훅(useState, useEffect, useSearchParams 등등…)과 프론트엔드 지식을 활용하여 프로젝트를 배포까지 하였습니다.
 
-In the project directory, you can run:
+### 배포 주소
 
-### `npm start`
+https://dynamic-daffodil-b524fa.netlify.app/
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## 화면 구성 🖥️
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### 메인 페이지
 
-### `npm test`
+<img src="./public/images/mainPage.png" width="300px">
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### 로그인 페이지
 
-### `npm run build`
+<img src="./public/images/loginPage.png" width="300px">
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### 상품 상세 페이지
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+<img src="./public/images/productDetailPage.png" width="300px">
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## 주요 기능 🛠️
 
-### `npm run eject`
+⭐ 상품 검색 기능
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+- json-server의 기본적인 기능을 활용하여, 원하는 상품을 검색할 수 있습니다.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+<img src="./public/images/searchImage.png" width="300px">
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+⭐ Private Route 기능
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+- 상품 상세 페이지를 보기 위해서는 로그인을 해야합니다.
+- 로그인을 하지 않고, 상품 상세 페이지로 이동 시 로그인 페이지로 redirect 됩니다.
 
-## Learn More
+⭐ Resonsive Web Design
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- 기본적인 반응형 웹사이트 기능을 포함합니다.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+⭐ 상품 데이터 베이스
 
-### Code Splitting
+- My JSON Server의 db.json파일을 이용하여 상품 데이터를 저장하였습니다.
+- db.json파일을 기반으로 메인 페이지에서 모든 상품을 유저에게 보여주고, 상품 상세 페이지를 구성하였습니다.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## 시작 가이드
 
-### Analyzing the Bundle Size
+### 요구 사항
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+- Node.js
 
-### Making a Progressive Web App
+### 설치 및 시작
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+```jsx
+$ git clone https://github.com/chobuzz/hnm.git
+$ cd hnm
+$ npm install
+$ npm start
+```
